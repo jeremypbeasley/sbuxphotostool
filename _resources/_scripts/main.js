@@ -92,7 +92,6 @@ function callProducts() {
 
 callProducts();
 
-
 // UPDATE PRODUCTS
 
 $('body').on('click', '.PhotosList li', function (){

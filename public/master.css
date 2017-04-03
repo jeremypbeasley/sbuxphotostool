@@ -480,7 +480,7 @@ img {
   cursor: pointer;
 }
 .PhotoPreview {
-  display: flex;
+  display: block;
   width: calc(100% - 350px);
   margin-left: 350px;
   padding: 50px;
@@ -492,7 +492,7 @@ img {
   background-size: cover;
   background-position: center center;
   background-color: rgba(0,0,0,0.1);
-  margin-right: 50px;
+  margin-bottom: 50px;
 }
 .Thumb.Square {
   width: 375px;
