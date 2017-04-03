@@ -82,7 +82,7 @@ function sortProducts(array, key) {
 var productsListSorted = "";
 
 function callProducts() {
-  $.getJSON('http://app.dropmark.com/336137.json?key=638be65e149826ec8892&callback=?', function(result) {
+  $.getJSON('/api/photos', function(result) {
     var productsList = result.items;
     productsListSorted = sortProducts(productsList, 'name');
     listProducts(productsListSorted);

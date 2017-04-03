@@ -8,6 +8,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+var http = require("http");
+var request = require('request');
 // var _ = require("lodash");
 var $ = require("jquery");
 var getJSON = require('get-json');
@@ -36,16 +38,19 @@ app.get('/api/users', (req, res) => {
     });
 });
 
-// http://app.dropmark.com/336137.json?key=638be65e149826ec8892&callback=?
-
 app.get('/api/photos', (req, res) => {
-  var request = require('request');
-  request("http://app.dropmark.com/" + process.env.DROPMARK_COLLECTION_ID + ".json?key=" + process.env.DROPMARK_KEY + "&callback=?", function (err, result) {
-    if (err) {
-      console.log(err);
+  const options = {
+    'auth': {
+      'user': process.env.DROPMARK_USER,
+      'pass': process.env.DROPMARK_PASS,
+      'sendImmediately': false
     }
-    res.send(result);
-  })
+  };
+  request.get("http://app.dropmark.com/" + process.env.DROPMARK_COLLECTION_ID + ".json?key=" + process.env.DROPMARK_KEY + "&callback=?", options, function (err, result) {
+    const bodyStr = result.body.slice(1, result.body.length - 1);
+    const body = JSON.parse(bodyStr);
+    res.send(body);
+  });
 });
 
 // 404
