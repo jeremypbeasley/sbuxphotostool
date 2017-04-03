@@ -1,0 +1,80 @@
+html {
+  min-height: 100%;
+}
+* {
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+  -webkit-font-smoothing antialiased
+  font-smoothing antialiased
+  box-sizing border-box
+}
+body {
+  height 100%
+  overflow-y auto
+  overflow-x hidden
+  margin 0;
+  background: #f7f7f7;
+  display: flex;
+}
+.hidden {
+  display none
+  opacity 0
+}
+img {
+ max-width: 100%;
+}
+
+// -------------
+
+.PhotosListContainer {
+  width: 350px;
+  height: 100vh;
+  overflow: scroll;
+  position: fixed;
+  background: white;
+  z-index: 5;
+}
+.PhotosListContainer p {
+  padding: 24px 16px;
+}
+.PhotosList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.PhotosList li {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.PhotoPreview {
+  display: flex;
+  width: calc(100% - 350px);
+  margin-left: 350px;
+  padding: 50px;
+}
+.Thumb {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0,0,0,.1);
+  margin-right: 50px;
+}
+.Thumb.Square {
+  width: 375px;
+  height: 375px;
+}
+.Thumb.Rectangle {
+  width: 562.5px;
+  height: 375px;
+}
+.Thumb.Circle {
+  width: 148px;
+  height: 148px;
+  border-radius: 100000px;
+  display: block;
+}
