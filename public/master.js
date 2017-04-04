@@ -209,11 +209,10 @@ function sortProducts(array, key) {
   });
 }
 
-function cropImageRectangle(cropId) {
-  console.log(cropId);
-  for (i = 0; i < cropsList.rectangle.length; i++) {
-    if (cropsList.rectangle[i].name == cropId) {
-      console.log("crop is: " + cropsList.rectangle[i].x)
+function cropImageRectangle(id) {
+  for (x = 0; x < cropsList.rectangle.length; x++) {
+    if (cropsList.rectangle[x].name == id ) {
+      console.log(cropsList.rectangle[x].x);
     }
   }
 }
@@ -240,15 +239,14 @@ function callCrops() {
 callProducts();
 callCrops();
 
-
 // CHOOSE AN IMAGE
 
 $('body').on('click', '.PhotosList li', function (){
   let currentProductId = $(this).attr("data-id");
+  console.log(productsList.length);
   for (i = 0; i < productsList.length; i++) {
     if (productsList[i].id == currentProductId) {
       displayProduct(productsList[i].image_url);
-      console.log("worked");
       cropImageRectangle(productsList[i].croperties.rectangle);
     }
   }
