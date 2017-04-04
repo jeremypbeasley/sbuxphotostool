@@ -77,28 +77,24 @@ function applyCrops(shape, x, y, z) {
   if (shape == 'rectangle') {
     // make retangle crop
     $('.Thumb.' + shape).css("background-size", zScale + "%");
-    // function applyCropRectangle(x,y,z)
+    $('.Thumb.' + shape).css("background-position-x", x + "%");
+    $('.Thumb.' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'square') {
     // make square crop
     let squareZScale = zScale * 1.78;
     $('.Thumb.' + shape).css("background-size", squareZScale + "%");
-    // function applyCropSquare(x,y,z)
+    $('.Thumb.' + shape).css("background-position-x", x + "%");
+    $('.Thumb.' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'circle') {
     // make circle crop
     let circleZScale = zScale * 1.78;
     $('.Thumb.' + shape).css("background-size", circleZScale + "%");
-    // function applyCropCircle(x,y,z)
+    $('.Thumb.' + shape).css("background-position-x", x + "%");
+    $('.Thumb.' + shape).css("background-position-y", y + "%");
   }
 }
-
-// function applyCropSquare(x,y,z) {
-// }
-// function applyCropRectangle(x,y,z) {
-// }
-// function applyCropCircle(x,y,z) {
-// }
 
 function getCrops(crops) {
   //console.log(crops);
