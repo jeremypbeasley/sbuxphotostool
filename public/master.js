@@ -210,14 +210,36 @@ function sortProducts(array, key) {
 }
 
 function applyCrops(shape, x, y, z) {
-  console.log(shape);
-  console.log("x: " + x);
-  console.log("y: " + y);
-  console.log("z: " + z);
-  // let zscale = z * 100 + "%";
-  // console.log(zscale);
-  // $('.Thumb').css("background-size", zscale)
+  // console.log(shape);
+  // console.log("x: " + x);
+  // console.log("y: " + y);
+  // console.log("z: " + z);
+  let zScale = z * 100;
+  if (shape == 'rectangle') {
+    // make retangle crop
+    $('.Thumb.' + shape).css("background-size", zScale + "%");
+    // function applyCropRectangle(x,y,z)
+  }
+  if (shape == 'square') {
+    // make square crop
+    let squareZScale = zScale * 1.78;
+    $('.Thumb.' + shape).css("background-size", squareZScale + "%");
+    // function applyCropSquare(x,y,z)
+  }
+  if (shape == 'circle') {
+    // make circle crop
+    let circleZScale = zScale * 1.78;
+    $('.Thumb.' + shape).css("background-size", circleZScale + "%");
+    // function applyCropCircle(x,y,z)
+  }
 }
+
+// function applyCropSquare(x,y,z) {
+// }
+// function applyCropRectangle(x,y,z) {
+// }
+// function applyCropCircle(x,y,z) {
+// }
 
 function getCrops(crops) {
   //console.log(crops);
