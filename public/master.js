@@ -209,19 +209,29 @@ function sortProducts(array, key) {
   });
 }
 
-function applyCrops(x,y,z) {
-  console.log(z);
-  let zscale = z * 100 + "%";
-  console.log(zscale);
-  $('.Thumb').css("background-size", zscale)
+function applyCrops(shape, x, y, z) {
+  console.log(shape);
+  console.log("x: " + x);
+  console.log("y: " + y);
+  console.log("z: " + z);
+  // let zscale = z * 100 + "%";
+  // console.log(zscale);
+  // $('.Thumb').css("background-size", zscale)
 }
 
-function getCropRectangle(id) {
-  for (x = 0; x < cropsList.rectangle.length; x++) {
-    if (cropsList.rectangle[x].name == id ) {
-      applyCrops(cropsList.rectangle[x].x, cropsList.rectangle[x].y, cropsList.rectangle[x].z);
+function getCrops(crops) {
+  //console.log(crops);
+  _.forEach(crops, function(value, key) {
+    function getShape(obj, prop) {
+      for (x = 0; x < obj[prop].length; x++) {
+        if (obj[prop][x].name == value ) {
+          applyCrops(prop, obj[prop][x].x, obj[prop][x].y, obj[prop][x].z);
+        }
+      }
     }
-  }
+    getShape(cropsList, key);
+  });
+
 }
 
 var productsList;
@@ -253,7 +263,8 @@ $('body').on('click', '.PhotosList li', function (){
   for (i = 0; i < productsList.length; i++) {
     if (productsList[i].id == currentProductId) {
       displayProduct(productsList[i].image_url);
-      getCropRectangle(productsList[i].croperties.rectangle);
+      //getCropRectangle(productsList[i].croperties.rectangle);
+      getCrops(productsList[i].croperties);
     }
   }
 });
