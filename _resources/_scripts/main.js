@@ -68,10 +68,17 @@ function sortProducts(array, key) {
   });
 }
 
-function cropImageRectangle(id) {
+function applyCrops(x,y,z) {
+  console.log(z);
+  let zscale = z * 100 + "%";
+  console.log(zscale);
+  $('.Thumb').css("background-size", zscale)
+}
+
+function getCropRectangle(id) {
   for (x = 0; x < cropsList.rectangle.length; x++) {
     if (cropsList.rectangle[x].name == id ) {
-      console.log(cropsList.rectangle[x].x);
+      applyCrops(cropsList.rectangle[x].x, cropsList.rectangle[x].y, cropsList.rectangle[x].z);
     }
   }
 }
@@ -102,11 +109,10 @@ callCrops();
 
 $('body').on('click', '.PhotosList li', function (){
   let currentProductId = $(this).attr("data-id");
-  console.log(productsList.length);
   for (i = 0; i < productsList.length; i++) {
     if (productsList[i].id == currentProductId) {
       displayProduct(productsList[i].image_url);
-      cropImageRectangle(productsList[i].croperties.rectangle);
+      getCropRectangle(productsList[i].croperties.rectangle);
     }
   }
 });
