@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": 7794921,
+      "image_url": "https://cdn2.dropmarkusercontent.com/108981/01ca2a760a079f6da98a0ef8525025b2d1e19a2f/crops_wholebean-01.jpg",
+      "name": "crops_wholebean-01",
+      "created_at": "2016-07-28 18:21:30 UTC",
+      "updated_at": "2016-07-28 18:21:30 UTC",
+      "croperties": {
+        "rectangle": "default",
+        "square": "default",
+        "circle": "default"
+      }
+    }
+  ]
+}

@@ -194,21 +194,10 @@ $( "fieldset#cropCircle label input" ).click(function() {
 
 // DISPLAY PRODUCTS
 
-function getProducts() {
-  $.getJSON('stuff.json', function(result) {
-    var output = '<select><option>Select a product...</option>';
-    $.each(result.items, function(i, items){
-      output += '<option value="' + items.content + '">' + items.name + '</option>';
-    });
-    output += '</select>';
-    document.getElementById("ProductSelector").innerHTML = output;
-  });
-};
-
 function listProducts(sortedlist) {
   var output = '';
   $.each(sortedlist, function(i){
-    output += '<li data-id="' + sortedlist[i].content + '">' + sortedlist[i].name + '</li>';
+    output += '<li data-id="' + sortedlist[i].id + '">' + sortedlist[i].name + '</li>';
   });
   $(".PhotosList").html(output);
 };
@@ -220,27 +209,52 @@ function sortProducts(array, key) {
   });
 }
 
+function cropImageRectangle(cropId) {
+  console.log(cropId);
+  for (i = 0; i < cropsList.rectangle.length; i++) {
+    if (cropsList.rectangle[i].name == cropId) {
+      console.log("crop is: " + cropsList.rectangle[i].x)
+    }
+  }
+}
+
+var productsList;
 var productsListSorted = "";
+var cropsList;
 
 function callProducts() {
-  $.getJSON('/api/photos', function(result) {
-    var productsList = result.items;
+  $.getJSON('mock.json', function(result) {
+    productsList = result.items;
     productsListSorted = sortProducts(productsList, 'name');
     listProducts(productsListSorted);
-    console.log(productsListSorted);
+    //console.log(productsListSorted);
+  });
+}
+
+function callCrops() {
+  $.getJSON('croperties.json', function(result) {
+    cropsList = result;
   });
 }
 
 callProducts();
+callCrops();
 
-// UPDATE PRODUCTS
+
+// CHOOSE AN IMAGE
 
 $('body').on('click', '.PhotosList li', function (){
-  var currentProduct = $(this).attr("data-id");
-  displayProduct(currentProduct);
+  let currentProductId = $(this).attr("data-id");
+  for (i = 0; i < productsList.length; i++) {
+    if (productsList[i].id == currentProductId) {
+      displayProduct(productsList[i].image_url);
+      console.log("worked");
+      cropImageRectangle(productsList[i].croperties.rectangle);
+    }
+  }
 });
 
 function displayProduct(productImg) {
   $( ".Thumb" ).css("background-image", "url(" + productImg + ")");
-  console.log(productImg);
+  //console.log(productImg);
 }

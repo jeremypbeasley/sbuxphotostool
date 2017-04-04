@@ -41,28 +41,44 @@ app.get('/api/users', (req, res) => {
 });
 
 function storeLocally (content) {
-  const newEntries = content.items.map(item => {
-    return {
-      id: item.id,
-      image_url: item.content,
-      name: item.name,
-      created_at: item.created_at,
-      updated_at: item.updated_at,
-      croperties: {
-        rectangle: "default",
-        square: "default",
-        circle: "default"
-      }
-    };
-  });
-  fs.readFile('public/mock.json', 'utf8', function readFileCallback(err, existingData) {
+  // get disk file
+  fs.readFile('public/mock.json', 'utf8', function readFileCallback(err, result) {
     if (err) {
       console.log(err);
       return;
     }
-    const obj = JSON.parse(existingData);
-    obj.items = obj.items.concat(newEntries);
-    fs.writeFile('public/mock.json', JSON.stringify(obj))
+    // make it json
+    const existingData = JSON.parse(result);
+    console.log("existing entries: " + existingData.items.length);
+    console.log(existingData.items[0].id);
+    // get Dropmark items
+    const newEntries = content.items.map(item => {
+      for(var i = 0; i < existingData.items.length; i++) {
+        // check if the Dropmark item already exists on disk
+        if (existingData.items[i].id !== item.id) {
+          // it's a new item
+          return {
+            id: item.id,
+            image_url: item.content,
+            name: item.name,
+            created_at: item.created_at,
+            updated_at: item.updated_at,
+            croperties: {
+              rectangle: "default",
+              square: "default",
+              circle: "default"
+            }
+          };
+        } else {
+          // it's not a new item
+          return;
+        }
+      }
+    });
+    // combine both objects
+    existingData.items = existingData.items.concat(newEntries);
+    // write to the file
+    fs.writeFile('public/mock.json', JSON.stringify(existingData))
   });
 }
 
@@ -80,6 +96,13 @@ app.get('/api/photos', (req, res) => {
     storeLocally(body);
     res.send(body);
   });
+});
+
+app.get('/api/croperties', (req, res) => {
+  fs.readFile('public/croperties.json', 'utf8', function readFileCallback(err, result) {
+    let body = JSON.parse(result);
+    res.send(body);
+  })
 });
 
 // 404
