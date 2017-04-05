@@ -7,9 +7,9 @@
       "created_at": "2017-04-04 20:31:42 UTC",
       "updated_at": "2017-04-04 20:31:47 UTC",
       "croperties": {
-        "rectangle": "default",
-        "square": "default",
-        "circle": "default"
+        "rectangle": "a",
+        "square": "b",
+        "circle": "e"
       }
     },
     {
@@ -19,9 +19,9 @@
       "created_at": "2017-04-04 20:31:42 UTC",
       "updated_at": "2017-04-04 20:31:47 UTC",
       "croperties": {
-        "rectangle": "default",
-        "square": "default",
-        "circle": "default"
+        "rectangle": "a",
+        "square": "d",
+        "circle": "e"
       }
     },
     {

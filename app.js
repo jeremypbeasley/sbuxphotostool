@@ -14,7 +14,8 @@ var _ = require("lodash");
 var $ = require("jquery");
 var getJSON = require('get-json');
 var fs = require('fs');
-var util = require('util')
+var util = require('util');
+var prettyjson = require('prettyjson');
 
 
 // Initialize / Routing
@@ -56,26 +57,40 @@ function storeLocally (content) {
     // loop through new items
     for(var i = 0; i < newEntries.items.length; i++) {
       // see if the new item id exists in existing
-      console.log(i + " ——————————————————————————————————————————");
       let theswitch = _.filter(existingEntries.items, { 'id': newEntries.items[i].id });
-      if ( theswitch.length >= 1) {
-        console.log("---MATCH---");
-        console.log(theswitch);
-      }
+      // if there's not a match, .filter will return an empty array, literally "[]"
       if ( theswitch.length <= 0 ) {
-        console.log("---NO MATCH---");
-        console.log("NEW: " + newEntries.items[i].id + " / " + newEntries.items[i].name);
+        let newItem = {
+          id: newEntries.items[i].id,
+          image_url: newEntries.items[i].content,
+          name: newEntries.items[i].name,
+          created_at: newEntries.items[i].created_at,
+          updated_at: newEntries.items[i].updated_at,
+          croperties: {
+            rectangle: 'default',
+            square: 'default',
+            circle: 'default'
+          }
+        };
+        console.log("------------------------------------------------------------------")
+        console.log(prettyjson.render(newItem, {
+          keysColor: 'magenta',
+          dashColor: 'magenta',
+          stringColor: 'white',
+          numberColor: 'white'
+        }));
+      }
+      // if there's a match .filter will return an array with the item
+      if ( theswitch.length >= 1) {
+        // don't do anything!
+        // console.log(prettyjson.render(theswitch, {
+        //   keysColor: 'green',
+        //   dashColor: 'magenta',
+        //   stringColor: 'green',
+        //   numberColor: 'white'
+        // }));
       }
     }
-      // if (theswitch) {
-      //   // do nothing
-      //   console.log("#" + i + ": EXISTING ITEM");
-      //   // return;
-      // } else {
-      //   console.log("#" + i + ": NEW ITEM");
-      // }
-      // make a new item
-
       // return {
       //   id: newEntries.items[i].id,
       //   image_url: newEntries.items[i].content,
