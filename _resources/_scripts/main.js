@@ -33,22 +33,38 @@
 
 // UPDATE CROPS
 
-$( "fieldset#cropRectangle label input" ).click(function() {
-  resetCropRectangle();
-  newCrop = $(this).parent().attr('data-crop');
-  console.log(newCrop);
-  $( ".ProductPhotoMask.Rectangle .ProductPhoto" ).addClass(newCrop);
-});
-$( "fieldset#cropSquare label input" ).click(function() {
-  resetCropSquare();
-  newCrop = $(this).parent().attr('data-crop');
-  $( ".ProductPhotoMask.Square .ProductPhoto" ).addClass(newCrop);
-});
-$( "fieldset#cropCircle label input" ).click(function() {
-  resetCropCircle();
-  newCrop = $(this).parent().attr('data-crop');
-  $( ".ProductPhotoMask.Circle .ProductPhoto" ).addClass(newCrop);
-});
+// $( "fieldset#cropRectangle label input" ).click(function() {
+//   resetCropRectangle();
+//   newCrop = $(this).parent().attr('data-crop');
+//   console.log(newCrop);
+//   $( ".ProductPhotoMask.Rectangle .ProductPhoto" ).addClass(newCrop);
+// });
+// $( "fieldset#cropSquare label input" ).click(function() {
+//   resetCropSquare();
+//   newCrop = $(this).parent().attr('data-crop');
+//   $( ".ProductPhotoMask.Square .ProductPhoto" ).addClass(newCrop);
+// });
+// $( "fieldset#cropCircle label input" ).click(function() {
+//   resetCropCircle();
+//   newCrop = $(this).parent().attr('data-crop');
+//   $( ".ProductPhotoMask.Circle .ProductPhoto" ).addClass(newCrop);
+// });
+
+// RENDER CROP SELECTORS
+
+function renderCropSelectors(cropsList) {
+  console.log("rendering crops");
+  _.forEach(cropsList, function(value, key) {
+    console.loh(key);
+    function makeSelectors(obj, prop) {
+      for (x = 0; x < obj[prop].length; x++) {
+        let output = "";
+        $('').append(output);
+      }
+    }
+    makeSelectors(cropsList, key);
+  });
+}
 
 
 // DISPLAY PRODUCTS
@@ -69,10 +85,6 @@ function sortProducts(array, key) {
 }
 
 function applyCrops(shape, x, y, z) {
-  // console.log(shape);
-  // console.log("x: " + x);
-  // console.log("y: " + y);
-  // console.log("z: " + z);
   let zScale = z * 100;
   if (shape == 'rectangle') {
     // make retangle crop
@@ -96,7 +108,7 @@ function applyCrops(shape, x, y, z) {
   }
 }
 
-function getCrops(crops) {
+function getItemCrops(crops) {
   //console.log(crops);
   _.forEach(crops, function(value, key) {
     function getShape(obj, prop) {
@@ -127,6 +139,7 @@ function callProducts() {
 function callCrops() {
   $.getJSON('croperties.json', function(result) {
     cropsList = result;
+    renderCropSelectors(cropsList);
   });
 }
 
@@ -141,7 +154,7 @@ $('body').on('click', '.PhotosList li', function (){
     if (productsList[i].id == currentProductId) {
       displayProduct(productsList[i].image_url);
       //getCropRectangle(productsList[i].croperties.rectangle);
-      getCrops(productsList[i].croperties);
+      getItemCrops(productsList[i].croperties);
     }
   }
 });

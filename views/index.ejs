@@ -13,4 +13,44 @@
   <div class="Thumb circle"></div>
 </div>
 
+<div class="CropChooser">
+  <fieldset id="cropRectangle">
+    <p>Rectangle</p>
+    <label class="control control--radio" data-crop="RectangleDefault">A) Default
+        <input type="radio" name="cropRectangle" checked >
+        <div class="control__indicator"></div>
+    </label>
+    <label class="control control--radio" data-crop="RectangleTight">B) Tight
+        <input type="radio" name="cropRectangle" />
+        <div class="control__indicator"></div>
+    </label>
+  </fieldset>
+  <fieldset id="cropSquare">
+    <p>Square</p>
+    <label class="control control--radio" data-crop="SquareDefault" >A) Default
+        <input type="radio" name="cropSquare" checked/>
+        <div class="control__indicator"></div>
+    </label>
+    <label class="control control--radio" data-crop="SquareTight" >B) Tight
+        <input type="radio" name="cropSquare"/>
+        <div class="control__indicator"></div>
+    </label>
+  </fieldset>
+  <fieldset id="cropCircle">
+    <p>Circle</p>
+    <label class="control control--radio" data-crop="CircleDefault">A) Default
+        <input type="radio" name="cropCircle" checked/>
+        <div class="control__indicator"></div>
+    </label>
+    <label class="control control--radio" data-crop="CircleTightTop">B) Tight, Top
+        <input type="radio" name="cropCircle"/>
+        <div class="control__indicator"></div>
+    </label>
+    <label class="control control--radio" data-crop="CircleTightCenter">C) Tight, Center
+        <input type="radio" name="cropCircle"/>
+        <div class="control__indicator"></div>
+    </label>
+  </fieldset>
+</div>
+
 <% include partials/footer %>

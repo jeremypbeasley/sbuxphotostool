@@ -1,5 +1,8 @@
 to do:
 
 - figure out how to translate x and y to pure CSS with background-size remaining as use of z scale;
-- allow user to toggle between croperties
-- allow user to save croperties
+
+- render all possible crops
+- select the crop from the mock file
+- on change, prompt save button
+- on click of save button, rewrite file
