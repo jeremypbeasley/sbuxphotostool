@@ -61,24 +61,24 @@ function storeLocally (content) {
       // if there's not a match, .filter will return an empty array, literally "[]"
       if ( theswitch.length <= 0 ) {
         let newItem = {
-          id: newEntries.items[i].id,
-          image_url: newEntries.items[i].content,
-          name: newEntries.items[i].name,
-          created_at: newEntries.items[i].created_at,
-          updated_at: newEntries.items[i].updated_at,
-          croperties: {
-            rectangle: 'default',
-            square: 'default',
-            circle: 'default'
+          "id": newEntries.items[i].id,
+          "image_url": newEntries.items[i].content,
+          "name": newEntries.items[i].name,
+          "created_at": newEntries.items[i].created_at,
+          "updated_at": newEntries.items[i].updated_at,
+          "croperties": {
+            "rectangle": "default",
+            "square": "default",
+            "circle": "default"
           }
         };
-        console.log("------------------------------------------------------------------")
-        console.log(prettyjson.render(newItem, {
-          keysColor: 'magenta',
-          dashColor: 'magenta',
-          stringColor: 'white',
-          numberColor: 'white'
-        }));
+        existingEntries.items.push(newItem);
+        // console.log(prettyjson.render(newItem, {
+        //   keysColor: 'magenta',
+        //   dashColor: 'magenta',
+        //   stringColor: 'white',
+        //   numberColor: 'white'
+        // }));
       }
       // if there's a match .filter will return an array with the item
       if ( theswitch.length >= 1) {
@@ -91,55 +91,8 @@ function storeLocally (content) {
         // }));
       }
     }
-      // return {
-      //   id: newEntries.items[i].id,
-      //   image_url: newEntries.items[i].content,
-      //   name: newEntries.items[i].name,
-      //   created_at: newEntries.items[i].created_at,
-      //   updated_at: newEntries.items[i].updated_at,
-      //   croperties: {
-      //     rectangle: "default",
-      //     square: "default",
-      //     circle: "default"
-      //   }
-      // }
-    //}
-
-    // _.map(newEntries, function() {
-    //   console.log(newEntries[i].id);
-    // });
-      // .map(item => {
-      //   for(var i = 0; i < existingData.items.length; i++) {
-      //     // check if the Dropmark item already exists on disk
-      //     if (existingData.items[i].id !== item.id) {
-      //       // console.log("EXISTING: " + existingData.items[i].id);
-      //       // console.log("NEW: " + item.id);
-      //       // console.log("————————————");
-      //       // it's a new item
-      //       return {
-      //         id: item.id,
-      //         image_url: item.content,
-      //         name: item.name,
-      //         created_at: item.created_at,
-      //         updated_at: item.updated_at,
-      //         croperties: {
-      //           rectangle: "default",
-      //           square: "default",
-      //           circle: "default"
-      //         }
-      //       };
-      //     } else {
-      //       // it's not a new item
-      //       //console.log("STATUS: Existing Item");
-      //       return;
-      //     }
-      //   }
-      // })
-      // .filter(item => item);
-    // combine both objects
-    //existingData.items = existingData.items.concat(newEntries);
     // write to the file
-    //fs.writeFile('public/mock.json', JSON.stringify(existingData))
+    fs.writeFile('public/mock.json', JSON.stringify(existingEntries))
   });
 }
 
