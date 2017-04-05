@@ -155,6 +155,19 @@ function renderCropSelectors(cropsList) {
   });
 }
 
+// PREVIEW ANOTHER CROP
+
+$('body').off().on('click', '.CropSelectorsContainer label', function (){
+  // get shape name
+  let shape = $(this).find('input').attr('name').substr(9, this.length);
+  // get crop name
+  let name = $(this).find('input').attr('id').substr(9 + shape.length + 1, this.length);
+  // get croperties for this crop
+  let croperties = _.filter(cropsList[shape], { 'name': name });
+  // apply the crop to preview
+  applyCrops(shape, name, croperties[0].x, croperties[0].y, croperties[0].z);
+});
+
 // DISPLAY PRODUCTS
 
 function listProducts(sortedlist) {
@@ -180,7 +193,6 @@ function applyCrops(shape, name, x, y, z) {
   if (shape == 'rectangle') {
     // make retangle crop
     $('#photo_' + shape).css({transform: 'scale(' + z + ')'});
-    // $('#photo_' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'square') {
     // make square crop
@@ -203,7 +215,6 @@ function applyCrops(shape, name, x, y, z) {
 }
 
 function getItemCrops(crops) {
-  //console.log(crops);
   _.forEach(crops, function(value, key) {
     function getShape(obj, prop) {
       for (x = 0; x < obj[prop].length; x++) {
@@ -226,7 +237,6 @@ function callProducts() {
     productsList = result.items;
     productsListSorted = sortProducts(productsList, 'name');
     listProducts(productsListSorted);
-    //console.log(productsListSorted);
   });
 }
 
@@ -247,7 +257,6 @@ $('body').on('click', '.PhotosList li', function (){
   for (i = 0; i < productsList.length; i++) {
     if (productsList[i].id == currentProductId) {
       displayProduct(productsList[i].image_url);
-      //getCropRectangle(productsList[i].croperties.rectangle);
       getItemCrops(productsList[i].croperties);
     }
   }
@@ -255,5 +264,4 @@ $('body').on('click', '.PhotosList li', function (){
 
 function displayProduct(productImg) {
   $(".ProductPhoto").css("background-image", "url(" + productImg + ")");
-  //console.log(productImg);
 }

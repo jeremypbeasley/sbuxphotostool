@@ -9,24 +9,10 @@
     },
     {
       "name": "a",
-      "description": "A Name",
+      "description": "Tight, Center",
       "x": 50,
       "y": 10,
       "z": 1.5
-    },
-    {
-      "name": "b",
-      "description": "B Name",
-      "x": 0,
-      "y": 0,
-      "z": 1
-    },
-    {
-      "name": "c",
-      "description": "C Name",
-      "x": 0,
-      "y": 0,
-      "z": 1
     }
   ],
   "square": [
