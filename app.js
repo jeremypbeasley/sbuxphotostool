@@ -19,19 +19,15 @@ var prettyjson = require('prettyjson');
 
 
 // Initialize / Routing
-
 app.get("/", function(req, res) {
   res.render("index.ejs");
   console.log('Listening at http://localhost:2401/')
 })
 
 // Listening
-
 app.listen(process.env.PORT || 2401);
 
-
 // API ////////////////////////////////////////////////////////////////////
-
 app.get('/api/users', (req, res) => {
   db.collection('users')
     .find()
@@ -40,10 +36,6 @@ app.get('/api/users', (req, res) => {
       res.send(result);
     });
 });
-
-function name() {
-
-}
 
 function storeLocally (content) {
   // get disk file
@@ -73,22 +65,6 @@ function storeLocally (content) {
           }
         };
         existingEntries.items.push(newItem);
-        // console.log(prettyjson.render(newItem, {
-        //   keysColor: 'magenta',
-        //   dashColor: 'magenta',
-        //   stringColor: 'white',
-        //   numberColor: 'white'
-        // }));
-      }
-      // if there's a match .filter will return an array with the item
-      if ( theswitch.length >= 1) {
-        // don't do anything!
-        // console.log(prettyjson.render(theswitch, {
-        //   keysColor: 'green',
-        //   dashColor: 'magenta',
-        //   stringColor: 'green',
-        //   numberColor: 'white'
-        // }));
       }
     }
     // now, remove existing items if they've been removed from newEntries aka Dropmark
@@ -96,21 +72,16 @@ function storeLocally (content) {
       // see if the new item id exists in existing
       let theswitch = _.filter(newEntries.items, { 'id': existingEntries.items[i].id });
       if ( theswitch.length <= 0) {
-        console.log("NO MATCH on indexOf " + i);
+        // remove the entries
         existingEntries.items.splice(i, 1);
-        // console.log(prettyjson.render(existingEntries.items[i], {
-        //   keysColor: 'white',
-        //   dashColor: 'magenta',
-        //   stringColor: 'white',
-        //   numberColor: 'white'
-        // }));
       }
     };
-    // write to the file
-    fs.writeFile('public/mock.json', JSON.stringify(existingEntries))
+    // write to the disk file
+    fs.writeFile('public/mock.json', JSON.stringify(existingEntries, null, 2))
   });
 }
 
+// Update all photos
 app.get('/api/photos', (req, res) => {
   const options = {
     'auth': {
@@ -132,6 +103,7 @@ app.get('/api/photos', (req, res) => {
   });
 });
 
+// Render Croperties
 app.get('/api/croperties', (req, res) => {
   fs.readFile('public/croperties.json', 'utf8', function readFileCallback(err, result) {
     let body = JSON.parse(result);
@@ -139,8 +111,7 @@ app.get('/api/croperties', (req, res) => {
   })
 });
 
-// 404
-
+// 404 / Error page
 app.use(function (req, res) {
     res.render('404.ejs');
 });
