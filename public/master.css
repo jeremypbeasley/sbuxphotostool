@@ -510,6 +510,10 @@ img {
 }
 .CropSelectorsContainer {
   width: 250px;
+  margin-top: 50px;
+  position: fixed;
+  right: 0;
+  top: 0;
 }
 .ControllerGroup {
   margin-bottom: 1rem;
@@ -541,8 +545,6 @@ fieldset {
   padding-left: 30px;
   margin-bottom: 20px;
   cursor: pointer;
-  font-size: 13px;
-  font-family: AvenirNext-Regular, Avenir;
   display: inline-block;
   width: calc(50% - 5px);
 }

@@ -4,6 +4,7 @@ to do:
 - update "name" locally if updated in Dropmark
 
 - render all possible crops
+- apply crops from mock file (to photos and buttons as selected state)
 - select the crop from the mock file
 - on change, prompt save button
 - on click of save button, rewrite file

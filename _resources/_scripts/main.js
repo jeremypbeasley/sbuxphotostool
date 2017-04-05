@@ -1,72 +1,12 @@
-
-
-// CROPS
-
-// var newCrop = "RectangleDefault";
-// $( ".ProductPhoto" ).addClass(newCrop);
-
-// check the Crop radio
-//$(".Controller").find("[data-crop='" + newCrop + "']").children("input").attr('checked',true);
-
-
-// SET DEFAULT CROPS
-
-// $( ".ProductPhotoMask.Rectangle .ProductPhoto" ).addClass("RectangleDefault");
-// $( ".ProductPhotoMask.Square .ProductPhoto" ).addClass("SquareDefault");
-// $( ".ProductPhotoMask.Circle .ProductPhoto" ).addClass("CircleDefault");
-//
-// // RESET CROPS
-//
-// function resetCropRectangle() {
-//   $( ".ProductPhotoMask.Rectangle .ProductPhoto" ).removeClass("RectangleDefault RectangleTight");
-//   console.log("Rectangle Reset")
-// };
-// function resetCropSquare() {
-//   $( ".ProductPhotoMask.Square .ProductPhoto" ).removeClass("SquareDefault SquareTight");
-//   console.log("Square Reset")
-// };
-// function resetCropCircle() {
-//   $( ".ProductPhotoMask.Circle .ProductPhoto" ).removeClass("CircleDefault CircleTightTop CircleTightCenter");
-//   console.log("Circle Reset")
-// };
-
-
-// UPDATE CROPS
-
-// $( "fieldset#cropRectangle label input" ).click(function() {
-//   resetCropRectangle();
-//   newCrop = $(this).parent().attr('data-crop');
-//   console.log(newCrop);
-//   $( ".ProductPhotoMask.Rectangle .ProductPhoto" ).addClass(newCrop);
-// });
-// $( "fieldset#cropSquare label input" ).click(function() {
-//   resetCropSquare();
-//   newCrop = $(this).parent().attr('data-crop');
-//   $( ".ProductPhotoMask.Square .ProductPhoto" ).addClass(newCrop);
-// });
-// $( "fieldset#cropCircle label input" ).click(function() {
-//   resetCropCircle();
-//   newCrop = $(this).parent().attr('data-crop');
-//   $( ".ProductPhotoMask.Circle .ProductPhoto" ).addClass(newCrop);
-// });
-
 // RENDER CROP SELECTORS
 
 function renderCropSelectors(cropsList) {
-  console.log("rendering crops");
   _.forEach(cropsList, function(value, key) {
-    console.log(key);
-    function makeSelectors(obj, prop) {
-      for (x = 0; x < obj[prop].length; x++) {
-        let output = "";
-        $('.CropSelectorsContainer').append('<label class="control control--radio" data-crop="RectangleDefault">' + obj[prop][x].description + '<input type="radio" name="cropRectangle"><div class="control__indicator"></div></label>');
-        $('').append(output);
-      }
+    let output = '<fieldset id="selector_' + key + '"><p>' + key + '</p>';
+    for (x = 0; x < cropsList[key].length; x++) {
+      output += '<label class="control control--radio">' + cropsList[key][x].description + '<input type="radio" name="selector_' + key + '" id="selector_' + key + '_' + cropsList[key][x].name + '"><div class="control__indicator"></div></label>';
     }
-    $('.CropSelectorsContainer').append('<fieldset id="">');
-    $('.CropSelectorsContainer').append('<p>' + key + '</p>');
-    makeSelectors(cropsList, key);
-    $('.CropSelectorsContainer').append('</fieldset>');
+    $('.CropSelectorsContainer').append(output);
   });
 }
 
@@ -87,16 +27,21 @@ function sortProducts(array, key) {
   });
 }
 
-function applyCrops(shape, x, y, z) {
+function applyCrops(shape, name, x, y, z) {
   let zScale = z * 100;
   if (shape == 'rectangle') {
     // make retangle crop
+    $('.CropSelectorsContainer input').attr('checked',false);
+    $('.CropSelectorsContainer #selector_' + shape + '_' + name).attr('checked',true);
+    $('#').attr('checked',true);
     $('.Thumb.' + shape).css("background-size", zScale + "%");
     $('.Thumb.' + shape).css("background-position-x", x + "%");
     $('.Thumb.' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'square') {
     // make square crop
+    $('#').attr('checked',false);
+    $('#').attr('checked',true);
     let squareZScale = zScale * 1.78;
     $('.Thumb.' + shape).css("background-size", squareZScale + "%");
     $('.Thumb.' + shape).css("background-position-x", x + "%");
@@ -104,6 +49,8 @@ function applyCrops(shape, x, y, z) {
   }
   if (shape == 'circle') {
     // make circle crop
+    $('#').attr('checked',false);
+    $('#').attr('checked',true);
     let circleZScale = zScale * 1.78;
     $('.Thumb.' + shape).css("background-size", circleZScale + "%");
     $('.Thumb.' + shape).css("background-position-x", x + "%");
@@ -117,7 +64,7 @@ function getItemCrops(crops) {
     function getShape(obj, prop) {
       for (x = 0; x < obj[prop].length; x++) {
         if (obj[prop][x].name == value ) {
-          applyCrops(prop, obj[prop][x].x, obj[prop][x].y, obj[prop][x].z);
+          applyCrops(prop, obj[prop][x].name, obj[prop][x].x, obj[prop][x].y, obj[prop][x].z);
         }
       }
     }
