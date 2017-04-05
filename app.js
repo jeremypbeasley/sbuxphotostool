@@ -112,6 +112,14 @@ app.get('/api/croperties', (req, res) => {
   })
 });
 
+// Render Local Photos
+app.get('/api/products', (req, res) => {
+  fs.readFile('public/mock.json', 'utf8', function readFileCallback(err, result) {
+    let body = JSON.parse(result);
+    res.send(body);
+  })
+});
+
 // 404 / Error page
 app.use(function (req, res) {
     res.render('404.ejs');

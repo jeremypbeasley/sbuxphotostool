@@ -92,7 +92,7 @@ var productsListSorted = "";
 var cropsList;
 
 function callProducts() {
-  $.getJSON('mock.json', function(result) {
+  $.getJSON('/api/products', function(result) {
     productsList = result.items;
     productsListSorted = sortProducts(productsList, 'name');
     listProducts(productsListSorted);
@@ -100,7 +100,7 @@ function callProducts() {
 }
 
 function callCrops() {
-  $.getJSON('croperties.json', function(result) {
+  $.getJSON('api/croperties', function(result) {
     cropsList = result;
     renderCropSelectors(cropsList);
   });
