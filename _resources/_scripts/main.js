@@ -32,30 +32,32 @@ function sortProducts(array, key) {
 }
 
 function applyCrops(shape, name, x, y, z) {
-  let zScale = z * 100;
   // reset all selectors
   $('fieldset#selector_' + shape + ' input').attr('checked',false);
   // apply crop to selector
   $('#selector_' + shape + '_' + name).attr('checked',true);
   if (shape == 'rectangle') {
     // make retangle crop
-    $('#photo_' + shape).css("background-size", zScale + "%");
-    $('#photo_' + shape).css("background-position-x", x + "%");
-    $('#photo_' + shape).css("background-position-y", y + "%");
+    $('#photo_' + shape).css({transform: 'scale(' + z + ')'});
+    // $('#photo_' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'square') {
     // make square crop
-    let squareZScale = zScale * 1.78;
-    $('#photo_' + shape).css("background-size", squareZScale + "%");
-    $('#photo_' + shape).css("background-position-x", x + "%");
-    $('#photo_' + shape).css("background-position-y", y + "%");
+    let adjustedZ = z * 1.78;
+    let adjustedY = y - 28;
+    let adjustedX = x - 50;
+    $('#photo_' + shape).css({transform: 'scale(' + adjustedZ + ')'});
+    $('#photo_' + shape).css("top", adjustedY + "%");
+    $('#photo_' + shape).css("left", adjustedX + "%");
   }
   if (shape == 'circle') {
     // make circle crop
-    let circleZScale = zScale * 1.78;
-    $('#photo_' + shape).css("background-size", circleZScale + "%");
-    $('#photo_' + shape).css("background-position-x", x + "%");
-    $('#photo_' + shape).css("background-position-y", y + "%");
+    let adjustedZ = z * 1.78;
+    let adjustedY = y - 28;
+    let adjustedX = x - 50;
+    $('#photo_' + shape).css({transform: 'scale(' + adjustedZ + ')'});
+    $('#photo_' + shape).css("top", adjustedY + "%");
+    $('#photo_' + shape).css("left", adjustedX + "%");
   }
 }
 

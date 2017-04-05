@@ -188,8 +188,8 @@
       "updated_at": "2016-07-13 04:06:40 UTC",
       "croperties": {
         "rectangle": "default",
-        "square": "default",
-        "circle": "default"
+        "square": "a",
+        "circle": "a"
       }
     },
     {

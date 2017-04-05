@@ -663,7 +663,7 @@ fieldset {
   transition: all 200ms ease-out 100ms;
   overflow: hidden;
   border-radius: 0px;
-  background: #000;
+  background: #00af66;
   z-index: 10;
 }
 .ProductPhotoMask.RectangleDefault {
