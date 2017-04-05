@@ -91,6 +91,21 @@ function storeLocally (content) {
         // }));
       }
     }
+    // now, remove existing items if they've been removed from newEntries aka Dropmark
+    for(var i = 0; i < existingEntries.items.length; i++) {
+      // see if the new item id exists in existing
+      let theswitch = _.filter(newEntries.items, { 'id': existingEntries.items[i].id });
+      if ( theswitch.length <= 0) {
+        console.log("NO MATCH on indexOf " + i);
+        existingEntries.items.splice(i, 1);
+        // console.log(prettyjson.render(existingEntries.items[i], {
+        //   keysColor: 'white',
+        //   dashColor: 'magenta',
+        //   stringColor: 'white',
+        //   numberColor: 'white'
+        // }));
+      }
+    };
     // write to the file
     fs.writeFile('public/mock.json', JSON.stringify(existingEntries))
   });

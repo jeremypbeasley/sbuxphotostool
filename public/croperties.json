@@ -19,14 +19,14 @@
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     },
     {
       "name": "c",
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     }
   ],
   "square": [
@@ -42,21 +42,21 @@
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     },
     {
       "name": "b",
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     },
     {
       "name": "c",
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     }
   ],
   "circle": [
@@ -72,21 +72,21 @@
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     },
     {
       "name": "b",
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     },
     {
       "name": "c",
       "description": "",
       "x": 0,
       "y": 0,
-      "z": 0
+      "z": 1
     }
   ]
 }
