@@ -508,3 +508,162 @@ img {
   border-radius: 100000px;
   display: block;
 }
+.CropSelectorsContainer {
+  width: 250px;
+}
+.ControllerGroup {
+  margin-bottom: 1rem;
+}
+@media (min-width: 1000px) {
+  .ControllerGroup {
+    float: left;
+    width: 250px;
+    margin-right: 50px;
+  }
+  .ControllerGroup.Circle {
+    width: 400px;
+  }
+  .ControllerGroup.Rectangle {
+    width: 100px;
+  }
+  .ControllerGroup.Square {
+    width: 100px;
+  }
+}
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.control {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: AvenirNext-Regular, Avenir;
+  display: inline-block;
+  width: calc(50% - 5px);
+}
+@media (min-width: 1000px) {
+  .control {
+    width: 140px;
+  }
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control__indicator {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #edebe9;
+}
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  background: #edebe9;
+}
+.control input:checked ~ .control__indicator {
+  background: #00af66;
+}
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #00af66;
+}
+.control input:disabled ~ .control__indicator {
+  background: #e6e6e6;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.control__indicator:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+.control--checkbox .control__indicator:after {
+  left: 8px;
+  top: 4px;
+  width: 3px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+.control--radio .control__indicator:after {
+  left: 7px;
+  top: 7px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+.control--radio input:disabled ~ .control__indicator:after {
+  background: #7b7b7b;
+}
+.select {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 15px 10px 0px;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #7b7b7b;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: AvenirNext-DemiBold;
+  font-size: 15px;
+  color: #000;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select:hover,
+.select select:focus {
+  color: #000;
+}
+.select select:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.select__arrow {
+  position: absolute;
+  top: 16px;
+  right: 0px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select__arrow,
+.select select:focus ~ .select__arrow {
+  border-top-color: #000;
+}
+.select select:disabled ~ .select__arrow {
+  border-top-color: #ccc;
+}

@@ -55,17 +55,20 @@
 function renderCropSelectors(cropsList) {
   console.log("rendering crops");
   _.forEach(cropsList, function(value, key) {
-    console.loh(key);
+    console.log(key);
     function makeSelectors(obj, prop) {
       for (x = 0; x < obj[prop].length; x++) {
         let output = "";
+        $('.CropSelectorsContainer').append('<label class="control control--radio" data-crop="RectangleDefault">' + obj[prop][x].description + '<input type="radio" name="cropRectangle"><div class="control__indicator"></div></label>');
         $('').append(output);
       }
     }
+    $('.CropSelectorsContainer').append('<fieldset id="">');
+    $('.CropSelectorsContainer').append('<p>' + key + '</p>');
     makeSelectors(cropsList, key);
+    $('.CropSelectorsContainer').append('</fieldset>');
   });
 }
-
 
 // DISPLAY PRODUCTS
 

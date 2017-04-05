@@ -1,6 +1,7 @@
 to do:
 
 - figure out how to translate x and y to pure CSS with background-size remaining as use of z scale;
+- update "name" locally if updated in Dropmark
 
 - render all possible crops
 - select the crop from the mock file
