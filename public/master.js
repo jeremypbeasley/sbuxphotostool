@@ -141,9 +141,13 @@ var n=this.__index__>=this.__values__.length;return{done:n,value:n?F:this.__valu
 },On.prototype.toJSON=On.prototype.valueOf=On.prototype.value=function(){return kr(this.__wrapped__,this.__actions__)},On.prototype.first=On.prototype.head,Ai&&(On.prototype[Ai]=tu),On}();typeof define=="function"&&typeof define.amd=="object"&&define.amd?(Zn._=it, define(function(){return it})):Vn?((Vn.exports=it)._=it,qn._=it):Zn._=it}).call(this);
 // RENDER CROP SELECTORS
 
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
 function renderCropSelectors(cropsList) {
   _.forEach(cropsList, function(value, key) {
-    let output = '<fieldset id="selector_' + key + '"><p>' + key + '</p>';
+    let output = '<fieldset id="selector_' + key + '"><p>' + capitalize(String(key)) + '</p>';
     for (x = 0; x < cropsList[key].length; x++) {
       output += '<label class="control control--radio">' + cropsList[key][x].description + '<input type="radio" name="selector_' + key + '" id="selector_' + key + '_' + cropsList[key][x].name + '"><div class="control__indicator"></div></label>';
     }
@@ -170,19 +174,18 @@ function sortProducts(array, key) {
 
 function applyCrops(shape, name, x, y, z) {
   let zScale = z * 100;
+  // reset all selectors
+  $('fieldset#selector_' + shape + ' input').attr('checked',false);
+  // apply crop to selector
+  $('#selector_' + shape + '_' + name).attr('checked',true);
   if (shape == 'rectangle') {
     // make retangle crop
-    $('.CropSelectorsContainer input').attr('checked',false);
-    $('.CropSelectorsContainer #selector_' + shape + '_' + name).attr('checked',true);
-    $('#').attr('checked',true);
     $('.Thumb.' + shape).css("background-size", zScale + "%");
     $('.Thumb.' + shape).css("background-position-x", x + "%");
     $('.Thumb.' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'square') {
     // make square crop
-    $('#').attr('checked',false);
-    $('#').attr('checked',true);
     let squareZScale = zScale * 1.78;
     $('.Thumb.' + shape).css("background-size", squareZScale + "%");
     $('.Thumb.' + shape).css("background-position-x", x + "%");
@@ -190,8 +193,6 @@ function applyCrops(shape, name, x, y, z) {
   }
   if (shape == 'circle') {
     // make circle crop
-    $('#').attr('checked',false);
-    $('#').attr('checked',true);
     let circleZScale = zScale * 1.78;
     $('.Thumb.' + shape).css("background-size", circleZScale + "%");
     $('.Thumb.' + shape).css("background-position-x", x + "%");
