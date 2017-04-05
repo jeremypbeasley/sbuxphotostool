@@ -77,7 +77,8 @@ function storeLocally (content) {
       }
     };
     // write to the disk file
-    fs.writeFile('public/mock.json', JSON.stringify(existingEntries, null, 2))
+    fs.writeFile('public/mock.json', JSON.stringify(existingEntries, null, 2));
+    console.log("successfully updated!");
   });
 }
 
