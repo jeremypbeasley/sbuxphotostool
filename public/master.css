@@ -461,8 +461,8 @@ img {
   height: 100vh;
   overflow: scroll;
   position: fixed;
-  background: #fff;
   z-index: 5;
+  margin: 72px;
 }
 .PhotosListContainer p {
   padding: 24px 16px;
@@ -472,18 +472,24 @@ img {
   padding: 0;
   margin: 0;
   width: 100%;
+  margin-top: -23px;
 }
 .PhotosList li {
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding: 16px;
+  padding: 16px 0px;
   width: 100%;
   cursor: pointer;
 }
+.SectionTitle {
+  border-bottom: 2px solid rgba(0,0,0,0.12);
+  padding-bottom: 16px;
+  margin-bottom: 48px;
+}
 .CropSelectorsContainer {
   width: 250px;
-  margin-top: 50px;
+  margin-top: 72px;
   position: fixed;
-  right: 0;
+  left: 530px;
   top: 0;
 }
 .ControllerGroup {
@@ -509,6 +515,9 @@ fieldset {
   border: none;
   padding: 0;
   margin: 0;
+  margin-bottom: 32px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .control {
   display: block;
@@ -643,13 +652,13 @@ fieldset {
 .PhotoPreview {
   display: block;
   width: 500px;
-  margin-left: 350px;
-  padding: 50px;
+  margin-left: 820px;
+  padding: 72px;
 }
 .ProductPhotoCont {
   max-width: 500px;
   width: 100%;
-  margin: 1.5rem;
+  margin-bottom: 48px;
   display: inline-block;
 }
 .ProductPhotoCont.Circle {

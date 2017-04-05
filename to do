@@ -1,7 +1,6 @@
 to do:
 
-- apply crops to actual photos
 - on change of selector, prompt "save crop" button
   - on click of save button, rewrite file
-- figure out how to translate x and y to pure CSS with background-size remaining as use of z scale;
+- stylistic upgrade to the UI, rules and such
 - update "name" locally if updated in Dropmark
