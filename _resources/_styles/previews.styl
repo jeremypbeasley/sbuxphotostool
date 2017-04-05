@@ -1,0 +1,112 @@
+.PhotoPreview {
+  display: block;
+  width: 500px;
+  margin-left: 350px;
+  padding: 50px;
+}
+.ProductPhotoCont {
+  max-width: 500px;
+  width: 100%;
+  margin: 1.5rem;
+  display: inline-block;
+}
+
+.ProductPhotoCont.Circle {
+  width: 148px;
+}
+
+.ProductPhotoMask {
+  width: 100%;
+  height: 0px;
+  padding-bottom: 56.25%;
+  position: relative;
+  transition: all 200ms ease-out 100ms;
+  overflow: hidden;
+  border-radius: 0px;
+  background: black;
+  z-index: 10;
+}
+
+.ProductPhotoMask.RectangleDefault {
+  border-radius: 0px;
+  padding-bottom: 56.25%;
+}
+
+.ProductPhotoMask.RectangleTight {
+  border-radius: 0px;
+  padding-bottom: 56.25%;
+}
+
+.ProductPhotoMask.Square {
+  border-radius: 0px;
+  padding-bottom: 100%;
+}
+
+.ProductPhotoMask.SquareDefault {
+  border-radius: 0px;
+  padding-bottom: 100%;
+}
+
+.ProductPhotoMask.Circle{
+  border-radius: 100px;
+  padding-bottom: 148px;
+  width: 148px;
+  //left: 50%;
+  //margin-left: -28px;
+}
+
+// .ProductPhotoMask.CircleMedium{
+//   border-radius: 100px;
+//   padding-bottom: 72px;
+//   width: 72px;
+//   //left: 50%;
+//   //margin-left: -28px;
+// }
+
+.ProductPhotoMask.Circle.Large{
+  border-radius: 100px;
+  padding-bottom: 112px;
+  width: 112px;
+  //left: 50%;
+  //margin-left: -28px;
+}
+
+.ProductPhotoMask.CircleDefault {
+  border-radius: 100px;
+  padding-bottom: 72px;
+  width: 72px;
+  left: 50%;
+  margin-left: -36px;
+}
+
+.ProductPhotoMask.CircleTightTop {
+  border-radius: 100px;
+  padding-bottom: 56px;
+  width: 56px;
+  left: 50%;
+  margin-left: -28px;
+}
+
+.ProductPhotoMask.CircleTightCenter {
+  border-radius: 100px;
+  padding-bottom: 56px;
+  width: 56px;
+  left: 50%;
+  margin-left: -28px;
+}
+
+.ProductPhoto {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  position: absolute;
+  // transform: scale(2);
+  // width: 393px;
+  // height: 393px;
+  transition: all 200ms ease-out 0ms, background-image 0ms;
+  height: 0px;
+  width: 100%;
+  padding-bottom: 56.25%;
+/*   margin: 0 auto; */
+  z-index: 5;
+}

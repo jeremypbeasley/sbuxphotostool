@@ -39,23 +39,23 @@ function applyCrops(shape, name, x, y, z) {
   $('#selector_' + shape + '_' + name).attr('checked',true);
   if (shape == 'rectangle') {
     // make retangle crop
-    $('.Thumb.' + shape).css("background-size", zScale + "%");
-    $('.Thumb.' + shape).css("background-position-x", x + "%");
-    $('.Thumb.' + shape).css("background-position-y", y + "%");
+    $('#photo_' + shape).css("background-size", zScale + "%");
+    $('#photo_' + shape).css("background-position-x", x + "%");
+    $('#photo_' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'square') {
     // make square crop
     let squareZScale = zScale * 1.78;
-    $('.Thumb.' + shape).css("background-size", squareZScale + "%");
-    $('.Thumb.' + shape).css("background-position-x", x + "%");
-    $('.Thumb.' + shape).css("background-position-y", y + "%");
+    $('#photo_' + shape).css("background-size", squareZScale + "%");
+    $('#photo_' + shape).css("background-position-x", x + "%");
+    $('#photo_' + shape).css("background-position-y", y + "%");
   }
   if (shape == 'circle') {
     // make circle crop
     let circleZScale = zScale * 1.78;
-    $('.Thumb.' + shape).css("background-size", circleZScale + "%");
-    $('.Thumb.' + shape).css("background-position-x", x + "%");
-    $('.Thumb.' + shape).css("background-position-y", y + "%");
+    $('#photo_' + shape).css("background-size", circleZScale + "%");
+    $('#photo_' + shape).css("background-position-x", x + "%");
+    $('#photo_' + shape).css("background-position-y", y + "%");
   }
 }
 
@@ -111,6 +111,6 @@ $('body').on('click', '.PhotosList li', function (){
 });
 
 function displayProduct(productImg) {
-  $( ".Thumb" ).css("background-image", "url(" + productImg + ")");
+  $(".ProductPhoto").css("background-image", "url(" + productImg + ")");
   //console.log(productImg);
 }

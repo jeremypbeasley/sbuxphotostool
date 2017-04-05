@@ -479,35 +479,6 @@ img {
   width: 100%;
   cursor: pointer;
 }
-.PhotoPreview {
-  display: block;
-  width: calc(100% - 350px);
-  margin-left: 350px;
-  padding: 50px;
-}
-.Thumb {
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-color: rgba(0,0,0,0.1);
-  margin-bottom: 50px;
-}
-.Thumb.square {
-  width: 375px;
-  height: 375px;
-}
-.Thumb.rectangle {
-  width: 666.7px;
-  height: 375px;
-}
-.Thumb.circle {
-  width: 148px;
-  height: 148px;
-  border-radius: 100000px;
-  display: block;
-}
 .CropSelectorsContainer {
   width: 250px;
   margin-top: 50px;
@@ -668,4 +639,89 @@ fieldset {
 }
 .select select:disabled ~ .select__arrow {
   border-top-color: #ccc;
+}
+.PhotoPreview {
+  display: block;
+  width: 500px;
+  margin-left: 350px;
+  padding: 50px;
+}
+.ProductPhotoCont {
+  max-width: 500px;
+  width: 100%;
+  margin: 1.5rem;
+  display: inline-block;
+}
+.ProductPhotoCont.Circle {
+  width: 148px;
+}
+.ProductPhotoMask {
+  width: 100%;
+  height: 0px;
+  padding-bottom: 56.25%;
+  position: relative;
+  transition: all 200ms ease-out 100ms;
+  overflow: hidden;
+  border-radius: 0px;
+  background: #000;
+  z-index: 10;
+}
+.ProductPhotoMask.RectangleDefault {
+  border-radius: 0px;
+  padding-bottom: 56.25%;
+}
+.ProductPhotoMask.RectangleTight {
+  border-radius: 0px;
+  padding-bottom: 56.25%;
+}
+.ProductPhotoMask.Square {
+  border-radius: 0px;
+  padding-bottom: 100%;
+}
+.ProductPhotoMask.SquareDefault {
+  border-radius: 0px;
+  padding-bottom: 100%;
+}
+.ProductPhotoMask.Circle {
+  border-radius: 100px;
+  padding-bottom: 148px;
+  width: 148px;
+}
+.ProductPhotoMask.Circle.Large {
+  border-radius: 100px;
+  padding-bottom: 112px;
+  width: 112px;
+}
+.ProductPhotoMask.CircleDefault {
+  border-radius: 100px;
+  padding-bottom: 72px;
+  width: 72px;
+  left: 50%;
+  margin-left: -36px;
+}
+.ProductPhotoMask.CircleTightTop {
+  border-radius: 100px;
+  padding-bottom: 56px;
+  width: 56px;
+  left: 50%;
+  margin-left: -28px;
+}
+.ProductPhotoMask.CircleTightCenter {
+  border-radius: 100px;
+  padding-bottom: 56px;
+  width: 56px;
+  left: 50%;
+  margin-left: -28px;
+}
+.ProductPhoto {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  position: absolute;
+  transition: all 200ms ease-out 0ms, background-image 0ms;
+  height: 0px;
+  width: 100%;
+  padding-bottom: 56.25%;
+/*   margin: 0 auto; */
+  z-index: 5;
 }
